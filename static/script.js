@@ -53,7 +53,6 @@ function handleGameOver(data) {
   $("scoreDraw").textContent = state.scores.draw;
   renderBoard(data.winning_combo);
 
-  // Bug fix 1 — Ghost Overlay: store the timer so newGame() can cancel it
   // if the player clicks New Game before the 1.1s delay finishes.
   state.overlayTimer = setTimeout(() => {
     const [emoji, headline, sub] = MESSAGES[`${key}_${state.mode === "ai" ? "ai" : "2p"}`];
@@ -96,7 +95,6 @@ async function onCellClick(i) {
 
 // ─── New game ────────────────────────────────────────────
 async function newGame() {
-  // Bug fix 1 — cancel any pending overlay before resetting
   clearTimeout(state.overlayTimer);
 
   const data = await post("/api/reset", {});
@@ -107,7 +105,6 @@ async function newGame() {
   $("overlay").classList.add("hidden");
   renderBoard();
 
-  // Bug fix 2 — correct status text for each mode
   $("statusText").textContent = state.mode === "two_player"
     ? "Player X's turn!"
     : "Your turn! Click a cell.";

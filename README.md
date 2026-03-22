@@ -40,14 +40,14 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/tic-tac-toe-ai.git
+git clone https://github.com/animeshshymalisingh-glitch/tic-tac-toe-ai.git
 cd tic-tac-toe-ai
 
 # 2. Install the dependency
 pip install flask
 
 # 3. Run the app
-python app.py
+python tictactoe_ai.py
 ```
 
 **4.** Open your browser and go to **http://localhost:5000**
@@ -58,7 +58,7 @@ python app.py
 
 ```
 tic-tac-toe-ai/
-├── app.py               ← Python/Flask backend — all game logic & AI
+├── tictactoe_ai.py               ← Python/Flask backend — all game logic & AI
 ├── templates/
 │   └── index.html       ← Page structure
 ├── static/

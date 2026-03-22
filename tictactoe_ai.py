@@ -1,11 +1,4 @@
-"""
-app.py  —  Flask backend for Tic-Tac-Toe
------------------------------------------
-POST /api/move   receives board + settings, returns AI move + game status
-POST /api/reset  returns a fresh empty board
 
-pip install flask
-"""
 
 from flask import Flask, render_template, request, jsonify
 import random
@@ -65,25 +58,7 @@ def status(spaces: list) -> dict:
 # ─── Minimax + Alpha-Beta Pruning ────────────────────────
 def minimax(spaces: list, is_maximizing: bool, depth: int, max_depth: int,
             alpha: int, beta: int) -> int:
-    """
-    Minimax with Alpha-Beta Pruning.
-
-    Alpha-Beta explanation:
-        alpha = best score COMPUTER has guaranteed so far (starts at -99)
-        beta  = best score PLAYER   has guaranteed so far (starts at +99)
-        If alpha >= beta, stop searching — the opponent would never
-        allow this branch, so evaluating it further is wasted work.
-
-    Why MOVE_ORDER matters here (unlike plain Minimax):
-        Pruning only cuts branches after a good move is already found.
-        Searching centre/corners first finds strong moves early,
-        which raises alpha (or lowers beta) sooner, causing more
-        branches to be pruned — fewer nodes evaluated overall.
-
-    Depth penalty:
-        Scoring as (10 - depth) makes the AI prefer faster wins
-        over delayed ones, fixing the 'lazy AI' bug.
-    """
+    
     if check_winner_silent(spaces, COMPUTER): return 10 - depth
     if check_winner_silent(spaces, PLAYER):   return depth - 10
     if check_tie(spaces) or depth >= max_depth: return 0
@@ -121,7 +96,6 @@ def computer_move(spaces: list, difficulty: str) -> int:
     rand_chance, max_depth = DIFFICULTY.get(difficulty, (0.0, 9))
 
     # Random move: gives easy/medium their beatable character.
-    # Easy blunders often, medium slips occasionally, hard never.
     if random.random() < rand_chance:
         return random.choice(empty)
 
