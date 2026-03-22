@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic-Tac-Toe AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- Floating background bubbles (pure CSS animation) -->
+  <div class="bubbles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="app">
+
+    <!-- ── Header ─────────────────────────────────── -->
+    <header class="header">
+      <h1 class="title">Tic<span class="accent">·</span>Tac<span class="accent">·</span>Toe</h1>
+      <p class="subtitle">You vs. the <span class="ai-label">Unbeatable AI</span></p>
+    </header>
+
+    <!-- ── Controls bar ───────────────────────────── -->
+    <div class="controls">
+
+      <!-- Mode toggle -->
+      <div class="control-group">
+        <label class="control-label">Mode</label>
+        <div class="toggle-group" id="modeToggle">
+          <button class="toggle-btn active" data-value="ai">🤖 vs AI</button>
+          <button class="toggle-btn" data-value="two_player">👥 2 Players</button>
+        </div>
+      </div>
+
+      <!-- Difficulty selector (hidden in 2-player mode) -->
+      <div class="control-group" id="difficultyGroup">
+        <label class="control-label">Difficulty</label>
+        <div class="toggle-group" id="difficultyToggle">
+          <button class="toggle-btn" data-value="easy">😊 Easy</button>
+          <button class="toggle-btn active" data-value="medium">😤 Medium</button>
+          <button class="toggle-btn" data-value="hard">💀 Hard</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Score tracker ──────────────────────────── -->
+    <div class="scoreboard">
+      <div class="score-card x-card">
+        <div class="score-icon">✕</div>
+        <div class="score-name" id="xLabel">You</div>
+        <div class="score-value" id="scoreX">0</div>
+      </div>
+      <div class="score-card draw-card">
+        <div class="score-icon">＝</div>
+        <div class="score-name">Draw</div>
+        <div class="score-value" id="scoreDraw">0</div>
+      </div>
+      <div class="score-card o-card">
+        <div class="score-icon">○</div>
+        <div class="score-name" id="oLabel">AI</div>
+        <div class="score-value" id="scoreO">0</div>
+      </div>
+    </div>
+
+    <!-- ── Reset scores button ─────────────────── -->
+    <button class="btn-reset-scores" id="btnResetScores">Reset Scores</button>
+
+    <!-- ── Status message ─────────────────────────── -->
+    <div class="status-bar">
+      <p class="status-text" id="statusText">Your turn! Click a cell.</p>
+    </div>
+
+    <!-- ── Game board ─────────────────────────────── -->
+    <div class="board-wrapper">
+      <div class="board" id="board">
+        <!-- 9 cells injected by JS -->
+      </div>
+    </div>
+
+    <!-- ── New Game button ────────────────────────── -->
+    <button class="btn-new-game" id="btnNewGame">New Game</button>
+
+  </div>
+
+  <!-- ── Result overlay modal ───────────────────── -->
+  <div class="overlay hidden" id="overlay">
+    <div class="modal">
+      <div class="modal-emoji" id="modalEmoji"></div>
+      <h2 class="modal-headline" id="modalHeadline"></h2>
+      <p class="modal-sub" id="modalSub"></p>
+      <div class="modal-buttons">
+        <button class="modal-btn btn-play-again" id="btnPlayAgain">Play Again</button>
+        <button class="modal-btn btn-quit" id="btnQuit">Quit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
