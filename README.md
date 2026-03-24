@@ -13,6 +13,8 @@
 
 > Built from scratch to deeply understand how game-playing AI works — from the algorithm to a fully playable web interface.
 
+### 🌐 [Play the Live Demo Here!]https://tic-tac-toe-ai-mwwd.onrender.com/
+*(Note: Hosted on Render's free tier. If the server is asleep, the first load may take 30-50 seconds to wake up!)*
 </div>
 
 ---
@@ -27,6 +29,7 @@
 - 🎬 **Result Modal** — fade-in overlay with Play Again / Quit buttons
 - 🌈 **Colourful UI** — animated background, glowing marks, smooth transitions
 - ⚡ **REST API** — clean separation between Python backend and JS frontend
+- ☁️ **Cloud Deployed** — CI/CD pipeline set up via GitHub and Render
 
 ---
 
@@ -59,6 +62,7 @@ python tictactoe_ai.py
 ```
 tic-tac-toe-ai/
 ├── tictactoe_ai.py               ← Python/Flask backend — all game logic & AI
+├── requirements.txt              ← Production dependencies (Flask, Gunicorn)
 ├── templates/
 │   └── index.html       ← Page structure
 ├── static/
@@ -185,6 +189,7 @@ Returns a fresh empty board.
 | Styling | CSS3 | Animations, layout, theming |
 | Interactivity | Vanilla JavaScript | Click handling, fetch API, DOM updates |
 | Fonts | Google Fonts (Fredoka One + Nunito) | Playful display typography |
+|Deployment| Render | Cloud hosting (Gunicorn WSGI) |
 
 ---
 
@@ -195,6 +200,7 @@ Returns a fresh empty board.
 - How to build a **REST API with Flask** and connect it to a frontend via `fetch()`
 - The difference between **backend logic** and **frontend display** in a real web app
 - How to fix subtle bugs like race conditions, root-level alpha amnesia, and lazy AI scoring
+- **Cloud Deployment:** Packaging a Flask app with Gunicorn and deploying a live CI/CD pipeline via Render.
 
 ---
 
